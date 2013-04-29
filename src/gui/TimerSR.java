@@ -36,22 +36,28 @@ public class TimerSR extends JFrame {
 		lblStatus.setBounds(170, 33, 46, 14);
 		getContentPane().add(lblStatus);
 	}
-
-	public void setTimerBB(){
+	
+	public class MyTimer extends Thread { //ungetestet
 		public void setText(final String text){
 			SwingUtilities.invokeLater(new Runnable() {
 		        public void run() {
-		            setText(text);
+		            TimerSR.this.lblStatus.setText(text);
 		        }
 			});
 		}
-		public void run(){
+		
+		@Override
+		public void run() {
 			for(int i = 10; i > 0; i--){
 				final String text = "(" + i + ") seconds left";
-				setText();
-			}
-			UsedBefore window2 = UsedBefore();
-			window2.setVisible(true);
+				setText(text);
+				try {
+					Thread.sleep(100)
+				} catch (Exception e) {
+					e.printSTackTrace(); //möp möp
+				}
+				
+			}	
 		}
 	}
 }
