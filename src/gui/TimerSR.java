@@ -1,13 +1,12 @@
 package gui;
 
-import javax.swing.JFrame;
 import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class TimerSR extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -38,20 +37,6 @@ public class TimerSR extends JFrame {
 	}
 
 	public void setTimerBB(){
-		public void setText(final String text){
-			SwingUtilities.invokeLater(new Runnable() {
-		        public void run() {
-		            setText(text);
-		        }
-			});
-		}
-		public void run(){
-			for(int i = 10; i > 0; i--){
-				final String text = "(" + i + ") seconds left";
-				setText();
-			}
-			UsedBefore window2 = UsedBefore();
-			window2.setVisible(true);
-		}
+
 	}
 }
