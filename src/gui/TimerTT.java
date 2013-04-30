@@ -28,91 +28,92 @@ public class TimerTT<Static> extends JFrame {
 	}
 
 	private void initGUI() {
-		setSize(new Dimension(256, 470));
+		setSize(new Dimension(500, 470));
 		setResizable(false);
 		getContentPane().setLayout(null);
 
-		btnGolemR= new JButton("Golem rechts");
+		btnGolemR = new JButton("Golem rechts");
 		btnGolemR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Thread myThread = new Thread(new Runnable() {
+					int j;
+					public void run() {
+						for (int i = 10; i >= 0; i--) {
+							System.out.println(""+i);
+							j=i;
+							lblStatus.setText(+j+"seconds left");					//noch nicht schön aber selten :-)
+							try {													//doppelstart??
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+
+								e.printStackTrace();
+							};
+						}
+				
+					}
+				});
+				myThread.start();
 			}
-			});
-		btnGolemR.setBounds(10, 25, 89, 23);
+			
+		});
+		btnGolemR.setBounds(10, 25, 110, 23);
 		getContentPane().add(btnGolemR);
-		
+
 		btnGolemL = new JButton("Golem links");
 		btnGolemL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnGolemL.setBounds(10, 50, 89, 23);
+		});
+		btnGolemL.setBounds(10, 50, 110, 23);
 		getContentPane().add(btnGolemL);
-		
+
 		btnWolfR = new JButton("Wolf rechts");
 		btnWolfR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnWolfR.setBounds(10, 75, 89, 23);
+		});
+		btnWolfR.setBounds(10, 75, 110, 23);
 		getContentPane().add(btnWolfR);
-		
+
 		btnWolfL = new JButton("Wolf links");
 		btnWolfL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnWolfL.setBounds(10, 100, 89, 23);
+		});
+		btnWolfL.setBounds(10, 100, 110, 23);
 		getContentPane().add(btnWolfL);
-		
+
 		btnWraithR = new JButton("Wraith rechts");
 		btnWraithR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnWraithR.setBounds(10, 125, 89, 23);
+		});
+		btnWraithR.setBounds(10, 125, 110, 23);
 		getContentPane().add(btnWraithR);
-		
+
 		btnWraithL = new JButton("Wraith links");
 		btnWraithL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnWraithL.setBounds(10, 150, 89, 23);
+		});
+		btnWraithL.setBounds(10, 150, 110, 23);
 		getContentPane().add(btnWraithL);
-		
+
 		btnSpider = new JButton("Spieder");
 		btnSpider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
-			});
-		btnSpider.setBounds(10, 175, 89, 23);
+		});
+		btnSpider.setBounds(10, 175, 110, 23);
 		getContentPane().add(btnSpider);
 
-		lblStatus = new JLabel("kp");
-		lblStatus.setBounds(170, 33, 46, 14);
+		lblStatus = new JLabel();
+		lblStatus.setBounds(170, 33, 100, 14);
 		getContentPane().add(lblStatus);
-
+	
 	}
 
-	public class MyTimer extends Thread { //ungetestet
-	     public void setText(final String text){
-	       SwingUtilities.invokeLater(new Runnable() {
-	             public void run() {
-	            	 TimerTT.this.lblStatus.setText(text);
-	             }
-	       });
-	     }
-	     public void run() {
-	         for(int i = 10; i > 0; i--){
-	           final String text = "(" + i + ") seconds left";
-	           setText(text);
-	           try {
-	              Thread.sleep(100);
-	                } catch (Exception e) {
-	                 e.printStackTrace(); //möp möp
-	             }
-	         } 
-	      }
-	 }
 	
+
+
 }
