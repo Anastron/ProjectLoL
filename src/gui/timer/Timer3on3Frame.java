@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Timer3on3Frame<Static> extends JFrame {
+public class Timer3on3Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JButton btnGolemR;
 	private JButton btnGolemL;
