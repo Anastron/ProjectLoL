@@ -1,15 +1,15 @@
 package gui.timer;
 
 public class GameTimer {
-	int Time;
+	private int time;
 
-	public GameTimer(final int i) {
+	public GameTimer(final int duration) {
 		Thread myThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				for (int j = i; j >= 0; j--) {
+				for (int j = duration; j >= 0; j--) {
 					// System.out.println("" + j);
-					Time = 4;
+					time = 4;
 					// noch nicht schön aber selten :-)
 					try { // doppelstart??
 						Thread.sleep(1000);

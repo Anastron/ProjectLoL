@@ -35,29 +35,29 @@ public class Timer3on3Frame extends JFrame {
 		btnGolemR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				GameTimer GR= new GameTimer(5);
-				
-				System.out.println(GR.Time);
-//				Thread myThread = new Thread(new Runnable() {
-//					int j;
-//					public void run() {
-//						for (int i = 10; i >= 0; i--) {
-//							System.out.println(""+i);
-//							j=i;
-//							lblStatus.setText(+j+"seconds left");					//noch nicht schön aber selten :-)
-//							try {													//doppelstart??
-//								Thread.sleep(1000);
-//							} catch (InterruptedException e) {
-//
-//								e.printStackTrace();
-//							};
-//						}
-//				
-//					}
-//				});
-//				myThread.start();
+				GameTimer GR = new GameTimer(5);
+
+				//System.out.println(GR.time);
+				// Thread myThread = new Thread(new Runnable() {
+				// int j;
+				// public void run() {
+				// for (int i = 10; i >= 0; i--) {
+				// System.out.println(""+i);
+				// j=i;
+				// lblStatus.setText(+j+"seconds left"); //noch nicht schön aber selten :-)
+				// try { //doppelstart??
+				// Thread.sleep(1000);
+				// } catch (InterruptedException e) {
+				//
+				// e.printStackTrace();
+				// };
+				// }
+				//
+				// }
+				// });
+				// myThread.start();
 			}
-			
+
 		});
 		btnGolemR.setBounds(10, 25, 110, 23);
 		getContentPane().add(btnGolemR);
@@ -66,7 +66,7 @@ public class Timer3on3Frame extends JFrame {
 		btnGolemL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnGolemL.setBounds(10, 50, 110, 23);
@@ -76,7 +76,7 @@ public class Timer3on3Frame extends JFrame {
 		btnWolfR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnWolfR.setBounds(10, 75, 110, 23);
@@ -86,7 +86,7 @@ public class Timer3on3Frame extends JFrame {
 		btnWolfL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnWolfL.setBounds(10, 100, 110, 23);
@@ -96,7 +96,7 @@ public class Timer3on3Frame extends JFrame {
 		btnWraithR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnWraithR.setBounds(10, 125, 110, 23);
@@ -106,7 +106,7 @@ public class Timer3on3Frame extends JFrame {
 		btnWraithL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnWraithL.setBounds(10, 150, 110, 23);
@@ -116,7 +116,7 @@ public class Timer3on3Frame extends JFrame {
 		btnSpider.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//empty
+				// empty
 			}
 		});
 		btnSpider.setBounds(10, 175, 110, 23);
@@ -125,10 +125,6 @@ public class Timer3on3Frame extends JFrame {
 		lblStatus = new JLabel();
 		lblStatus.setBounds(170, 33, 100, 14);
 		getContentPane().add(lblStatus);
-	
 	}
-
-	
-
 
 }

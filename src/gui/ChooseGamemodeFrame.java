@@ -57,7 +57,7 @@ public class ChooseGamemodeFrame extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Auswählen();
+				onBtnOK();
 			}
 
 		});
@@ -68,12 +68,12 @@ public class ChooseGamemodeFrame extends JFrame {
 		btnAbbrechen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Abbrechen();
+				Cancel();
 			}
 		});
 	}
 
-	private void Auswählen() {
+	private void onBtnOK() {
 		if (rdbtn5on5.isSelected()) {
 			Timer5on5Frame SR = new Timer5on5Frame();
 			SR.setVisible(true);
@@ -85,7 +85,7 @@ public class ChooseGamemodeFrame extends JFrame {
 		}
 	}
 
-	private void Abbrechen() {
+	private void Cancel() {
 		dispose();
 
 	}
