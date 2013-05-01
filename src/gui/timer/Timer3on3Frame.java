@@ -23,7 +23,6 @@ public class Timer3on3Frame extends JFrame {
 	public Timer3on3Frame() {
 		initGUI();
 		setLocationRelativeTo(null);
-
 	}
 
 	private void initGUI() {
@@ -35,7 +34,8 @@ public class Timer3on3Frame extends JFrame {
 		btnGolemR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				GameTimer GR = new GameTimer(5);
+				GameTimer timer = new GameTimer(5, lblStatus);
+				timer.start();
 
 				//System.out.println(GR.time);
 				// Thread myThread = new Thread(new Runnable() {

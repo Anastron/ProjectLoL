@@ -1,25 +1,43 @@
 package gui.timer;
 
-public class GameTimer {
-	private int time;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
-	public GameTimer(final int duration) {
-		Thread myThread = new Thread(new Runnable() {
+public class GameTimer implements Runnable {
+	private int timer_duration;
+	private JLabel updateLabel;
+
+	public GameTimer(int duration, JLabel updateLabel) {
+		this.timer_duration = duration;
+		this.updateLabel = updateLabel;
+	}
+	
+	public void start() {
+		new Thread(this).start();
+	}
+
+	@Override
+	public void run() {
+		for (int currtime = timer_duration; currtime >= 0; currtime--) {
+			// System.out.println("" + j);
+			// time = 4;
+			// noch nicht schön aber selten :-)
+			try { // doppelstart??
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			update(currtime);
+		}
+	}
+	
+	private void update(final int time) {
+		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				for (int j = duration; j >= 0; j--) {
-					// System.out.println("" + j);
-					time = 4;
-					// noch nicht schön aber selten :-)
-					try { // doppelstart??
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				return;
+				updateLabel.setText(time + "s");
 			}
 		});
-		myThread.start();
 	}
 }
