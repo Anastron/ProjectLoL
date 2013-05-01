@@ -35,24 +35,27 @@ public class TimerTT<Static> extends JFrame {
 		btnGolemR = new JButton("Golem rechts");
 		btnGolemR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Thread myThread = new Thread(new Runnable() {
-					int j;
-					public void run() {
-						for (int i = 10; i >= 0; i--) {
-							System.out.println(""+i);
-							j=i;
-							lblStatus.setText(+j+"seconds left");					//noch nicht schön aber selten :-)
-							try {													//doppelstart??
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-
-								e.printStackTrace();
-							};
-						}
+				Timer GR= new Timer(5);
 				
-					}
-				});
-				myThread.start();
+				System.out.println(GR.Time);
+//				Thread myThread = new Thread(new Runnable() {
+//					int j;
+//					public void run() {
+//						for (int i = 10; i >= 0; i--) {
+//							System.out.println(""+i);
+//							j=i;
+//							lblStatus.setText(+j+"seconds left");					//noch nicht schön aber selten :-)
+//							try {													//doppelstart??
+//								Thread.sleep(1000);
+//							} catch (InterruptedException e) {
+//
+//								e.printStackTrace();
+//							};
+//						}
+//				
+//					}
+//				});
+//				myThread.start();
 			}
 			
 		});
