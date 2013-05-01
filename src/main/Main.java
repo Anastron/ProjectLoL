@@ -4,12 +4,9 @@ import gui.Mainwindow;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		Mainwindow firstchoose = new Mainwindow();
-		firstchoose.setVisible(true);
+		Mainwindow MainWindow = new Mainwindow();
+		MainWindow.setVisible(true);
 
 	}
 

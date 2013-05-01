@@ -52,29 +52,30 @@ public class SpielmodusChoose extends JFrame {
 		btnOk.setBounds(115, 91, 51, 26);
 		getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Auswählen();
 			}
 
 		});
-		
+
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setBounds(12, 91, 96, 26);
 		getContentPane().add(btnAbbrechen);
 		btnAbbrechen.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Abbrechen();
 			}
-
 		});
 	}
 
 	private void Auswählen() {
-		if (rdbtn5on5.isSelected()){
+		if (rdbtn5on5.isSelected()) {
 			TimerSR SR = new TimerSR();
 			SR.setVisible(true);
 			dispose();
-		}else if (rdbtn3on3.isSelected()){
+		} else if (rdbtn3on3.isSelected()) {
 			TimerTT TT = new TimerTT();
 			TT.setVisible(true);
 			dispose();

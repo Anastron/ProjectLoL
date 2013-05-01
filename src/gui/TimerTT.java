@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 public class TimerTT<Static> extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +33,7 @@ public class TimerTT<Static> extends JFrame {
 
 		btnGolemR = new JButton("Golem rechts");
 		btnGolemR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Timer GR= new Timer(5);
 				
@@ -64,7 +64,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnGolemL = new JButton("Golem links");
 		btnGolemL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnGolemL.setBounds(10, 50, 110, 23);
@@ -72,7 +74,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnWolfR = new JButton("Wolf rechts");
 		btnWolfR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnWolfR.setBounds(10, 75, 110, 23);
@@ -80,7 +84,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnWolfL = new JButton("Wolf links");
 		btnWolfL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnWolfL.setBounds(10, 100, 110, 23);
@@ -88,7 +94,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnWraithR = new JButton("Wraith rechts");
 		btnWraithR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnWraithR.setBounds(10, 125, 110, 23);
@@ -96,7 +104,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnWraithL = new JButton("Wraith links");
 		btnWraithL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnWraithL.setBounds(10, 150, 110, 23);
@@ -104,7 +114,9 @@ public class TimerTT<Static> extends JFrame {
 
 		btnSpider = new JButton("Spieder");
 		btnSpider.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//empty
 			}
 		});
 		btnSpider.setBounds(10, 175, 110, 23);
