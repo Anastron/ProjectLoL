@@ -19,10 +19,7 @@ public class GameTimer implements Runnable {
 	@Override
 	public void run() {
 		for (int currtime = timer_duration; currtime >= 0; currtime--) {
-			// System.out.println("" + j);
-			// time = 4;
-			// noch nicht schön aber selten :-)
-			try { // doppelstart??
+			try { 
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
