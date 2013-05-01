@@ -1,9 +1,9 @@
-package gui;
+package gui.timer;
 
-public class Timer {
+public class GameTimer {
 	int Time;
 
-	public Timer(final int i) {
+	public GameTimer(final int i) {
 		Thread myThread = new Thread(new Runnable() {
 			@Override
 			public void run() {

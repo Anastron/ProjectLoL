@@ -1,5 +1,8 @@
 package gui;
 
+import gui.timer.Timer3on3Frame;
+import gui.timer.Timer5on5Frame;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -12,7 +15,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class SpielmodusChoose extends JFrame {
+public class ChooseGamemodeFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JRadioButton rdbtn5on5;
 	private JRadioButton rdbtn3on3;
@@ -21,7 +24,7 @@ public class SpielmodusChoose extends JFrame {
 	private JButton btnOk;
 	private JButton btnAbbrechen;
 
-	public SpielmodusChoose() {
+	public ChooseGamemodeFrame() {
 		setResizable(false);
 		initGUI();
 		setLocationRelativeTo(null);
@@ -72,11 +75,11 @@ public class SpielmodusChoose extends JFrame {
 
 	private void Auswählen() {
 		if (rdbtn5on5.isSelected()) {
-			TimerSR SR = new TimerSR();
+			Timer5on5Frame SR = new Timer5on5Frame();
 			SR.setVisible(true);
 			dispose();
 		} else if (rdbtn3on3.isSelected()) {
-			TimerTT TT = new TimerTT();
+			Timer3on3Frame TT = new Timer3on3Frame();
 			TT.setVisible(true);
 			dispose();
 		}

@@ -57,7 +57,7 @@ public class Mainwindow extends JFrame {
 	}
 
 	private void openModusChoose() {
-		SpielmodusChoose choose = new SpielmodusChoose();
+		ChooseGamemodeFrame choose = new ChooseGamemodeFrame();
 		choose.setVisible(true);
 	}
 }

@@ -1,4 +1,4 @@
-package gui;
+package gui.timer;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,12 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-public class TimerSR extends JFrame {
+public class Timer5on5Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JButton btnBlueBuff;
 	private JLabel lblStatus;
 
-	public TimerSR() {
+	public Timer5on5Frame() {
 		initGUI();
 		setLocationRelativeTo(null);
 
@@ -45,7 +45,7 @@ public class TimerSR extends JFrame {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
-					TimerSR.this.lblStatus.setText(text);
+					Timer5on5Frame.this.lblStatus.setText(text);
 				}
 			});
 		}

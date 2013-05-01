@@ -1,4 +1,4 @@
-package gui;
+package gui.timer;
 
 // bin noch am überlegen :-)
 import java.awt.Dimension;
@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class TimerTT<Static> extends JFrame {
+public class Timer3on3Frame<Static> extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JButton btnGolemR;
 	private JButton btnGolemL;
@@ -20,7 +20,7 @@ public class TimerTT<Static> extends JFrame {
 	private JButton btnSpider;
 	private JLabel lblStatus;
 
-	public TimerTT() {
+	public Timer3on3Frame() {
 		initGUI();
 		setLocationRelativeTo(null);
 
@@ -35,7 +35,7 @@ public class TimerTT<Static> extends JFrame {
 		btnGolemR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Timer GR= new Timer(5);
+				GameTimer GR= new GameTimer(5);
 				
 				System.out.println(GR.Time);
 //				Thread myThread = new Thread(new Runnable() {
