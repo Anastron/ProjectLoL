@@ -73,14 +73,14 @@ public class ChooseGamemode extends JFrame {
 
 	private void onBtnOK() {
 		if (rdbtn5on5.isSelected()) {
-			// Counter5on5Frame SR = new Counter5on5Frame();
-			// SR.setVisible(true);
-			// dispose();
+			 Counter5on5Frame SR = new Counter5on5Frame();
+			 SR.setVisible(true);
+			 dispose();
 			
 			// Falls Counter5on5Frame vorhanden folgende Zeilen löschen
 			
 			Toolkit.getDefaultToolkit().beep();
-			JOptionPane.showMessageDialog(null, "Diese Option ist leider noch nicht verfügbar :(", "Nicht verfügbar", JOptionPane.OK_CANCEL_OPTION);
+			JOptionPane.showMessageDialog(null, "Diese Option ist leider noch nicht vollständig :(", "Nicht vollständig", JOptionPane.OK_CANCEL_OPTION);
 			
 		} else if (rdbtn3on3.isSelected()) {			
 			// Counter3on3Frame TT = new Counter3on3Frame();

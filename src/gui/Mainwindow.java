@@ -46,7 +46,7 @@ public class Mainwindow extends JFrame {
 		btnTimer.setBounds(10, 43, 121, 49);
 		getContentPane().add(btnTimer);
 
-		btnKonterchars = new JButton("Konterchars");
+		btnKonterchars = new JButton("Counterchars");
 		btnKonterchars.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				openModusChooseCounter();
