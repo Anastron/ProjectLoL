@@ -18,14 +18,16 @@ public class GameTimer implements Runnable {
 
 	@Override
 	public void run() {
-		for (int currtime = timer_duration; currtime >= 0; currtime--) {
+		for (int currtime = timer_duration; currtime >= 0;) {
+			update(currtime);
+			
 			try { 
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
-			update(currtime);
+			currtime--;
 		}
 	}
 	
