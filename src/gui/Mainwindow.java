@@ -1,5 +1,7 @@
 package gui;
 
+import gui.counter.ChooseGamemode;
+
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import javax.swing.JButton;
@@ -41,6 +43,11 @@ public class Mainwindow extends JFrame {
 		getContentPane().add(btnTimer);
 
 		btnKonterchars = new JButton("Konterchars");
+		btnKonterchars.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				openModusChooseCounter();
+			}
+		});
 		btnKonterchars.setFont(new Font("Centaur", Font.BOLD, 20));
 		btnKonterchars.setBounds(157, 43, 171, 49);
 		getContentPane().add(btnKonterchars);
@@ -58,6 +65,10 @@ public class Mainwindow extends JFrame {
 
 	private void openModusChoose() {
 		ChooseGamemodeFrame choose = new ChooseGamemodeFrame();
+		choose.setVisible(true);
+	}
+	private void openModusChooseCounter(){
+		ChooseGamemode choose = new ChooseGamemode();
 		choose.setVisible(true);
 	}
 }

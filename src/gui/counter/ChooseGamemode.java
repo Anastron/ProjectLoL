@@ -1,23 +1,19 @@
-package gui;
-
-import gui.timer.Timer3on3Frame;
-import gui.timer.Timer5on5Frame;
+package gui.counter;
 
 import java.awt.Dimension;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
-public class ChooseGamemodeFrame extends JFrame {
+public class ChooseGamemode extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JRadioButton rdbtn5on5;
 	private JRadioButton rdbtn3on3;
@@ -26,7 +22,7 @@ public class ChooseGamemodeFrame extends JFrame {
 	private JButton btnOk;
 	private JButton btnAbbrechen;
 
-	public ChooseGamemodeFrame() {
+	public ChooseGamemode() {
 		setResizable(false);
 		initGUI();
 		setLocationRelativeTo(null);
@@ -77,11 +73,11 @@ public class ChooseGamemodeFrame extends JFrame {
 
 	private void onBtnOK() {
 		if (rdbtn5on5.isSelected()) {
-			Timer5on5Frame SR = new Timer5on5Frame();
+			Counter5on5Frame SR = new Counter5on5Frame();
 			SR.setVisible(true);
 			dispose();
 		} else if (rdbtn3on3.isSelected()) {
-			Timer3on3Frame TT = new Timer3on3Frame();
+			Counter3on3Frame TT = new Counter3on3Frame();
 			TT.setVisible(true);
 			dispose();
 		} else {
