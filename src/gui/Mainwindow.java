@@ -3,7 +3,11 @@ package gui;
 import gui.counter.ChooseGamemode;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -53,11 +57,21 @@ public class Mainwindow extends JFrame {
 		getContentPane().add(btnKonterchars);
 
 		btnLineup = new JButton("Lineup");
+		btnLineup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openModusChooseLineup();
+			}
+		});
 		btnLineup.setFont(new Font("Centaur", Font.BOLD, 20));
 		btnLineup.setBounds(357, 43, 109, 49);
 		getContentPane().add(btnLineup);
 
 		btnInfo = new JButton("Info");
+		btnInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openInfo();
+			}
+		});
 		btnInfo.setFont(new Font("Dialog", Font.PLAIN, 8));
 		btnInfo.setBounds(428, 116, 46, 20);
 		getContentPane().add(btnInfo);
@@ -70,5 +84,13 @@ public class Mainwindow extends JFrame {
 	private void openModusChooseCounter(){
 		ChooseGamemode choose = new ChooseGamemode();
 		choose.setVisible(true);
+	}
+	private void openModusChooseLineup(){
+		Toolkit.getDefaultToolkit().beep();
+		JOptionPane.showMessageDialog(null, "Diese Option ist leider noch nicht verfügbar :(", "Nicht verfügbar", JOptionPane.OK_CANCEL_OPTION);
+	}
+	private void openInfo(){
+		InfoFrame info = new InfoFrame();
+		info.setVisible(true);
 	}
 }
