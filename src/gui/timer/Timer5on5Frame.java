@@ -85,6 +85,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnRedBuff = new JButton("F2: Red Buff");
 		btnRedBuff.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				setTimerRB();
 			}
@@ -98,6 +99,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnWolfsOne = new JButton("F3: Wolfs");
 		btnWolfsOne.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerW();
 			}
@@ -111,6 +113,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnGhostsOne = new JButton("F4: Ghosts");
 		btnGhostsOne.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerG();
 			}
@@ -124,6 +127,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnGolems = new JButton("F5: Golems");
 		btnGolems.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerGolOne();
 			}
@@ -142,6 +146,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnBlueBuff_1 = new JButton("F6: Blue Buff");
 		btnBlueBuff_1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerBB_2();
 			}
@@ -155,6 +160,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnRedBuff_1 = new JButton("F7: Red Buff");
 		btnRedBuff_1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerRB_2();
 			}
@@ -168,6 +174,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnWolfs = new JButton("F8: Wolfs");
 		btnWolfs.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerW_2();
 			}
@@ -181,6 +188,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnGhosts = new JButton("F9: Ghosts");
 		btnGhosts.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerG_2();
 			}
@@ -194,6 +202,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnGolems_1 = new JButton("F10: Golems");
 		btnGolems_1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerGo_2();
 			}
@@ -207,6 +216,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnDragon = new JButton("F11: Dragon");
 		btnDragon.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerD();
 			}
@@ -220,6 +230,7 @@ public class Timer5on5Frame extends JFrame {
 
 		btnNashor = new JButton("F12: Nashor");
 		btnNashor.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setTimerN();
 			}

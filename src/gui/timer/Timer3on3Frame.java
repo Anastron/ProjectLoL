@@ -25,9 +25,18 @@ public class Timer3on3Frame extends JFrame {
 	private JLabel lblWraithR;
 	private JLabel lblWraithL;
 	private JLabel lblSpider;
+	private GameTimer timerGR;
+	private GameTimer timerGL;
+	private GameTimer timerWR;
+	private GameTimer timerWL;
+	private GameTimer timerWrR;
+	private GameTimer timerWrL;
+	private GameTimer timerSpider;
 
 	public Timer3on3Frame() {
 		initGUI();
+		initTimer();
+		//initHotkeys();
 		setLocationRelativeTo(null);
 	}
 
@@ -39,8 +48,8 @@ public class Timer3on3Frame extends JFrame {
 
 		btnGolemR = new JButton("Golem rechts");
 		btnGolemR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
 				TimerGR();
 			}
 		});
@@ -49,6 +58,7 @@ public class Timer3on3Frame extends JFrame {
 
 		btnGolemL = new JButton("Golem links");
 		btnGolemL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerGL();
 			}
@@ -58,6 +68,7 @@ public class Timer3on3Frame extends JFrame {
 
 		btnWolfR = new JButton("Wolf rechts");
 		btnWolfR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerWR();
 			}
@@ -67,6 +78,7 @@ public class Timer3on3Frame extends JFrame {
 
 		btnWolfL = new JButton("Wolf links");
 		btnWolfL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerWL();
 			}
@@ -76,6 +88,7 @@ public class Timer3on3Frame extends JFrame {
 
 		btnWraithR = new JButton("Wraith rechts");
 		btnWraithR.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerWrR();
 			}
@@ -85,6 +98,7 @@ public class Timer3on3Frame extends JFrame {
 
 		btnWraithL = new JButton("Wraith links");
 		btnWraithL.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerWrL();
 			}
@@ -92,8 +106,9 @@ public class Timer3on3Frame extends JFrame {
 		btnWraithL.setBounds(10, 150, 110, 23);
 		getContentPane().add(btnWraithL);
 
-		btnSpider = new JButton("Spieder");
+		btnSpider = new JButton("Spider");
 		btnSpider.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				TimerS();
 			}
@@ -104,60 +119,75 @@ public class Timer3on3Frame extends JFrame {
 		lblGolemR = new JLabel("50s");
 		lblGolemR.setBounds(170, 30, 100, 14);
 		getContentPane().add(lblGolemR);
-		
+
 		lblGolemL = new JLabel("50s");
 		lblGolemL.setBounds(170, 54, 100, 14);
 		getContentPane().add(lblGolemL);
-		
+
 		lblWolfR = new JLabel("50s");
 		lblWolfR.setBounds(170, 79, 100, 14);
 		getContentPane().add(lblWolfR);
-		
+
 		lblWolfL = new JLabel("50s");
 		lblWolfL.setBounds(170, 104, 100, 14);
 		getContentPane().add(lblWolfL);
-		
+
 		lblWraithR = new JLabel("50s");
 		lblWraithR.setBounds(170, 129, 100, 14);
 		getContentPane().add(lblWraithR);
-		
+
 		lblWraithL = new JLabel("50s");
 		lblWraithL.setBounds(170, 154, 100, 14);
 		getContentPane().add(lblWraithL);
-		
+
 		lblSpider = new JLabel("300s");
 		lblSpider.setBounds(170, 179, 100, 14);
 		getContentPane().add(lblSpider);
 	}
-	
+
+	private void initTimer() {
+
+		timerGR = new GameTimer(50, lblGolemR);
+		timerGL = new GameTimer(50, lblGolemL);
+		timerWR = new GameTimer(50, lblWolfR);
+		timerWL = new GameTimer(50, lblWolfL);
+		timerWrR = new GameTimer(50, lblWraithR);
+		timerWrL = new GameTimer(50, lblWraithL);
+		timerSpider = new GameTimer(300, lblSpider);
+	}
+
 	private void TimerGR() {
-		
-		GameTimer timer = new GameTimer(50, lblGolemR);
-		timer.start();
+		timerGR.start();
 	}
+
 	private void TimerGL() {
-		GameTimer timer = new GameTimer(50, lblGolemL);
-		timer.start();
+
+		timerGL.start();
 	}
+
 	private void TimerWR() {
-		GameTimer timer = new GameTimer(50, lblWolfR);
-		timer.start();
+
+		timerWR.start();
 	}
+
 	private void TimerWL() {
-		GameTimer timer = new GameTimer(50, lblWolfL);
-		timer.start();
+
+		timerWL.start();
 	}
+
 	private void TimerWrR() {
-		GameTimer timer = new GameTimer(50, lblWraithR);
-		timer.start();
+
+		timerWrR.start();
 	}
+
 	private void TimerWrL() {
-		GameTimer timer = new GameTimer(50, lblWraithL);
-		timer.start();
+
+		timerWrL.start();
 	}
+
 	private void TimerS() {
-		GameTimer timer = new GameTimer(300, lblSpider);
-		timer.start();
+
+		timerSpider.start();
 	}
 
 }
