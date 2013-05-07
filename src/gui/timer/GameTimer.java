@@ -6,19 +6,31 @@ import javax.swing.SwingUtilities;
 public class GameTimer implements Runnable {
 	private int timer_duration;
 	private JLabel updateLabel;
+	
+	private boolean running = false;
+	private int currtime;
 
 	public GameTimer(int duration, JLabel updateLabel) {
 		this.timer_duration = duration;
 		this.updateLabel = updateLabel;
 	}
 	
-	public void start() {
+	public void start(){
+		if(! isRunning()){
+			forcestart();
+		} else{
+			reset();
+		}
+	}
+	
+	private void forcestart() {
 		new Thread(this).start();
 	}
 
 	@Override
 	public void run() {
-		for (int currtime = timer_duration; currtime >= 0;) {
+		running = true;
+		for (currtime = timer_duration; currtime >= 0;) {
 			update(currtime);
 			
 			try { 
@@ -29,6 +41,7 @@ public class GameTimer implements Runnable {
 			
 			currtime--;
 		}
+		running = false;
 	}
 	
 	private void update(final int time) {
@@ -38,5 +51,13 @@ public class GameTimer implements Runnable {
 				updateLabel.setText(time + "s");
 			}
 		});
+	}
+	
+	private boolean isRunning(){
+		return running;
+	}
+	
+	private void reset(){
+		currtime = timer_duration;
 	}
 }
