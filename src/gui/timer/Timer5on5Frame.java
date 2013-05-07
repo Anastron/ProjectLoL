@@ -1,13 +1,18 @@
 package gui.timer;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.KeyStroke;
+
+import util.GlobalHotkeyManager;
 
 public class Timer5on5Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -54,6 +59,7 @@ public class Timer5on5Frame extends JFrame {
 		setTitle("5on5-Timer");
 		initGUI();
 		initTimer();
+		initHotkeys();
 		setLocationRelativeTo(null);
 
 	}
@@ -63,167 +69,305 @@ public class Timer5on5Frame extends JFrame {
 		setResizable(false);
 		getContentPane().setLayout(null);
 
-		btnBlueBuff = new JButton("Blue Buff");
+		btnBlueBuff = new JButton("F1: Blue Buff");
 		btnBlueBuff.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				setTimerBB();
 			}
 		});
-		btnBlueBuff.setBounds(10, 24, 89, 23);
+		btnBlueBuff.setBounds(10, 24, 109, 23);
 		getContentPane().add(btnBlueBuff);
 
 		lblBluebuffone = new JLabel("5min");
-		lblBluebuffone.setBounds(170, 33, 46, 14);
+		lblBluebuffone.setBounds(182, 28, 46, 14);
 		getContentPane().add(lblBluebuffone);
 
-		btnRedBuff = new JButton("Red Buff");
+		btnRedBuff = new JButton("F2: Red Buff");
 		btnRedBuff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setTimerRB();
 			}
 		});
-		btnRedBuff.setBounds(10, 51, 89, 23);
+		btnRedBuff.setBounds(10, 51, 109, 23);
 		getContentPane().add(btnRedBuff);
 
 		lbRedBuffOne = new JLabel("5min");
-		lbRedBuffOne.setBounds(170, 58, 46, 14);
+		lbRedBuffOne.setBounds(182, 55, 46, 14);
 		getContentPane().add(lbRedBuffOne);
 
-		btnWolfsOne = new JButton("Wolfs");
+		btnWolfsOne = new JButton("F3: Wolfs");
 		btnWolfsOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerW();
 			}
 		});
-		btnWolfsOne.setBounds(10, 78, 89, 23);
+		btnWolfsOne.setBounds(10, 78, 109, 23);
 		getContentPane().add(btnWolfsOne);
 
 		lblWolfsOne = new JLabel("60s");
-		lblWolfsOne.setBounds(170, 83, 46, 14);
+		lblWolfsOne.setBounds(182, 82, 46, 14);
 		getContentPane().add(lblWolfsOne);
 
-		btnGhostsOne = new JButton("Ghosts");
+		btnGhostsOne = new JButton("F4: Ghosts");
 		btnGhostsOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerG();
 			}
 		});
-		btnGhostsOne.setBounds(10, 106, 89, 23);
+		btnGhostsOne.setBounds(10, 106, 109, 23);
 		getContentPane().add(btnGhostsOne);
 
 		lblGhostsOne = new JLabel("50s");
-		lblGhostsOne.setBounds(170, 110, 46, 14);
+		lblGhostsOne.setBounds(182, 110, 46, 14);
 		getContentPane().add(lblGhostsOne);
 
-		btnGolems = new JButton("Golems");
+		btnGolems = new JButton("F5: Golems");
 		btnGolems.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerGolOne();
 			}
 		});
-		btnGolems.setBounds(10, 133, 89, 23);
+		btnGolems.setBounds(10, 133, 109, 23);
 		getContentPane().add(btnGolems);
 
 		lblGolemsOne = new JLabel("60s");
-		lblGolemsOne.setBounds(170, 137, 46, 14);
+		lblGolemsOne.setBounds(182, 137, 46, 14);
 		getContentPane().add(lblGolemsOne);
 
 		lblEnemyJungle = new JLabel("Enemy Jungle");
 		lblEnemyJungle.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEnemyJungle.setBounds(66, 181, 90, 19);
+		lblEnemyJungle.setBounds(76, 181, 90, 19);
 		getContentPane().add(lblEnemyJungle);
 
-		btnBlueBuff_1 = new JButton("Blue Buff");
+		btnBlueBuff_1 = new JButton("F6: Blue Buff");
 		btnBlueBuff_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerBB_2();
 			}
 		});
-		btnBlueBuff_1.setBounds(10, 221, 89, 23);
+		btnBlueBuff_1.setBounds(10, 221, 109, 23);
 		getContentPane().add(btnBlueBuff_1);
 
 		lblBlueBuff_2 = new JLabel("5min");
-		lblBlueBuff_2.setBounds(170, 225, 46, 14);
+		lblBlueBuff_2.setBounds(182, 225, 46, 14);
 		getContentPane().add(lblBlueBuff_2);
 
-		btnRedBuff_1 = new JButton("Red Buff");
+		btnRedBuff_1 = new JButton("F7: Red Buff");
 		btnRedBuff_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerRB_2();
 			}
 		});
-		btnRedBuff_1.setBounds(10, 248, 89, 23);
+		btnRedBuff_1.setBounds(10, 248, 109, 23);
 		getContentPane().add(btnRedBuff_1);
 
 		lblRedBuff_2 = new JLabel("5min");
-		lblRedBuff_2.setBounds(170, 252, 46, 14);
+		lblRedBuff_2.setBounds(182, 252, 46, 14);
 		getContentPane().add(lblRedBuff_2);
 
-		btnWolfs = new JButton("Wolfs");
+		btnWolfs = new JButton("F8: Wolfs");
 		btnWolfs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerW_2();
 			}
 		});
-		btnWolfs.setBounds(10, 275, 89, 23);
+		btnWolfs.setBounds(10, 275, 109, 23);
 		getContentPane().add(btnWolfs);
 
 		lblWolfs_2 = new JLabel("60s");
-		lblWolfs_2.setBounds(170, 279, 46, 14);
+		lblWolfs_2.setBounds(182, 277, 46, 14);
 		getContentPane().add(lblWolfs_2);
 
-		btnGhosts = new JButton("Ghosts");
+		btnGhosts = new JButton("F9: Ghosts");
 		btnGhosts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerG_2();
 			}
 		});
-		btnGhosts.setBounds(10, 302, 89, 23);
+		btnGhosts.setBounds(10, 302, 109, 23);
 		getContentPane().add(btnGhosts);
 
 		lblGhosts_2 = new JLabel("50s");
-		lblGhosts_2.setBounds(170, 306, 46, 14);
+		lblGhosts_2.setBounds(182, 306, 46, 14);
 		getContentPane().add(lblGhosts_2);
 
-		btnGolems_1 = new JButton("Golems");
+		btnGolems_1 = new JButton("F10: Golems");
 		btnGolems_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerGo_2();
 			}
 		});
-		btnGolems_1.setBounds(10, 329, 89, 23);
+		btnGolems_1.setBounds(10, 329, 109, 23);
 		getContentPane().add(btnGolems_1);
 
 		lblGolems_2 = new JLabel("60s");
-		lblGolems_2.setBounds(170, 333, 46, 14);
+		lblGolems_2.setBounds(182, 333, 46, 14);
 		getContentPane().add(lblGolems_2);
 
-		btnDragon = new JButton("Dragon");
+		btnDragon = new JButton("F11: Dragon");
 		btnDragon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerD();
 			}
 		});
-		btnDragon.setBounds(10, 375, 89, 23);
+		btnDragon.setBounds(10, 375, 109, 23);
 		getContentPane().add(btnDragon);
 
 		lblDragon = new JLabel("6min");
-		lblDragon.setBounds(170, 379, 46, 14);
+		lblDragon.setBounds(182, 379, 46, 14);
 		getContentPane().add(lblDragon);
 
-		btnNashor = new JButton("Nashor");
+		btnNashor = new JButton("F12: Nashor");
 		btnNashor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setTimerN();
 			}
 		});
-		btnNashor.setBounds(10, 407, 89, 23);
+		btnNashor.setBounds(10, 407, 109, 23);
 		getContentPane().add(btnNashor);
 
 		lblNashor = new JLabel("7min");
-		lblNashor.setBounds(170, 411, 46, 14);
+		lblNashor.setBounds(182, 411, 46, 14);
 		getContentPane().add(lblNashor);
+	}
+
+	private void initHotkeys() {
+		GlobalHotkeyManager hotkeyManager = GlobalHotkeyManager.getInstance();
+		
+		String keyIdent_BB1 = "projektLoL.hotkey.BB1";
+		String keyIdent_BB2 = "projektLoL.hotkey.BB2";
+		String keyIdent_RB1 = "projektLoL.hotkey.RB1";
+		String keyIdent_RB2 = "projektLoL.hotkey.RB2";
+		String keyIdent_W1 = "projektLoL.hotkey.W1";
+		String keyIdent_W2 = "projektLoL.hotkey.W2";
+		String keyIdent_Go1 = "projektLoL.hotkey.Go1";
+		String keyIdent_Go2 = "projektLoL.hotkey.Go2";
+		String keyIdent_Gh1 = "projektLoL.hotkey.Gh1";
+		String keyIdent_Gh2 = "projektLoL.hotkey.Gh2";
+		String keyIdent_N1 = "projektLoL.hotkey.N1";
+		String keyIdent_D1 = "projektLoL.hotkey.D1";
+		
+		
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), keyIdent_BB1);
+	    hotkeyManager.getActionMap().put(keyIdent_BB1, new AbstractAction() {
+			private static final long serialVersionUID = -4920728089299859094L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerBB();
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0), keyIdent_RB1);
+	    hotkeyManager.getActionMap().put(keyIdent_RB1, new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				setTimerRB();				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), keyIdent_W1);
+	    hotkeyManager.getActionMap().put(keyIdent_W1, new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerW();
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), keyIdent_Gh1);
+	    hotkeyManager.getActionMap().put(keyIdent_Gh1, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerG();
+				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), keyIdent_Go1);
+	    hotkeyManager.getActionMap().put(keyIdent_Go1, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerGolOne();
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), keyIdent_BB2);
+	    hotkeyManager.getActionMap().put(keyIdent_BB2, new AbstractAction() {
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerBB_2();				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), keyIdent_RB2);
+	    hotkeyManager.getActionMap().put(keyIdent_RB2, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerRB_2();			
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0), keyIdent_W2);
+	    hotkeyManager.getActionMap().put(keyIdent_W2, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerW_2();
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F9, 0), keyIdent_Gh2);
+	    hotkeyManager.getActionMap().put(keyIdent_Gh2, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerG_2();				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F10, 0), keyIdent_Go2);
+	    hotkeyManager.getActionMap().put(keyIdent_Go2, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerGo_2();				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F11, 0), keyIdent_D1);
+	    hotkeyManager.getActionMap().put(keyIdent_D1, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerD();				
+			}
+		});
+	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F12, 0), keyIdent_N1);
+	    hotkeyManager.getActionMap().put(keyIdent_N1, new AbstractAction() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setTimerN();				
+			}
+		});
+	    
 	}
 
 	private void initTimer() {
