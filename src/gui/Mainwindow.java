@@ -48,6 +48,7 @@ public class Mainwindow extends JFrame {
 
 		btnKonterchars = new JButton("Counterchars");
 		btnKonterchars.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				openModusChooseCounter();
 			}
@@ -58,6 +59,7 @@ public class Mainwindow extends JFrame {
 
 		btnLineup = new JButton("Lineup");
 		btnLineup.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				openModusChooseLineup();
 			}
@@ -68,6 +70,7 @@ public class Mainwindow extends JFrame {
 
 		btnInfo = new JButton("Info");
 		btnInfo.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				openInfo();
 			}
@@ -81,14 +84,17 @@ public class Mainwindow extends JFrame {
 		ChooseGamemodeFrame choose = new ChooseGamemodeFrame();
 		choose.setVisible(true);
 	}
+	
 	private void openModusChooseCounter(){
 		ChooseGamemode choose = new ChooseGamemode();
 		choose.setVisible(true);
 	}
+	
 	private void openModusChooseLineup(){
 		Toolkit.getDefaultToolkit().beep();
 		JOptionPane.showMessageDialog(null, "Diese Option ist leider noch nicht verfügbar :(", "Nicht verfügbar", JOptionPane.OK_CANCEL_OPTION);
 	}
+	
 	private void openInfo(){
 		InfoFrame info = new InfoFrame();
 		info.setVisible(true);
