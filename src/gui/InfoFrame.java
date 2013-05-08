@@ -27,7 +27,7 @@ public class InfoFrame extends JFrame {
 		setType(Type.UTILITY);
 		getContentPane().setLayout(null);
 		
-		lblVAlpha = new JLabel("???");
+		lblVAlpha = new JLabel("alpha 1.0");
 		lblVAlpha.setBounds(121, 12, 89, 16);
 		getContentPane().add(lblVAlpha);
 		
