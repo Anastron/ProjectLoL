@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import util.SpeechSynthesizer;
+
 import main.Main;
 
 import de.mikescher.MikesKeyLogger.converter.GermanKeyboardConverter;
@@ -276,6 +278,7 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 	}
 
 	private void setTimerBB() {
+		SpeechSynthesizer.speak("Starting Timer B B");
 		timerBB_1.start();
 	}
 
