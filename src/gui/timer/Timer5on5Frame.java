@@ -4,17 +4,21 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.KeyStroke;
 
-import util.GlobalHotkeyManager;
+import main.Main;
 
-public class Timer5on5Frame extends JFrame {
+import de.mikescher.MikesKeyLogger.converter.GermanKeyboardConverter;
+import de.mikescher.MikesKeyLogger.events.GlobalKeyEvent;
+import de.mikescher.MikesKeyLogger.interfaces.GlobalKeyListener;
+import de.mikescher.MikesKeyLogger.logger.GlobalKeyLogger;
+
+public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyListener {
 	private static final long serialVersionUID = 1L;
 	private JButton btnBlueBuff;
 	private JLabel lblBluebuffone;
@@ -54,20 +58,26 @@ public class Timer5on5Frame extends JFrame {
 	private GameTimer timerW_2;
 	private GameTimer timerD_1;
 	private GameTimer timerN_1;
+	
+	private GlobalKeyLogger gKeyLogger = new GlobalKeyLogger();
 
 	public Timer5on5Frame() {
-		setTitle("5on5-Timer");
+		super();
+		
 		initGUI();
 		initTimer();
 		initHotkeys();
-		setLocationRelativeTo(null);
-
+		
+		addWindowListener(this);
 	}
 
 	private void initGUI() {
+		setTitle("5on5-Timer");
 		setSize(new Dimension(256, 470));
 		setResizable(false);
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 
 		btnBlueBuff = new JButton("F1: Blue Buff");
 		btnBlueBuff.addActionListener(new ActionListener() {
@@ -244,141 +254,10 @@ public class Timer5on5Frame extends JFrame {
 	}
 
 	private void initHotkeys() {
-		GlobalHotkeyManager hotkeyManager = GlobalHotkeyManager.getInstance();
-		
-		String keyIdent_BB1 = "projektLoL.hotkey.BB1";
-		String keyIdent_BB2 = "projektLoL.hotkey.BB2";
-		String keyIdent_RB1 = "projektLoL.hotkey.RB1";
-		String keyIdent_RB2 = "projektLoL.hotkey.RB2";
-		String keyIdent_W1 = "projektLoL.hotkey.W1";
-		String keyIdent_W2 = "projektLoL.hotkey.W2";
-		String keyIdent_Go1 = "projektLoL.hotkey.Go1";
-		String keyIdent_Go2 = "projektLoL.hotkey.Go2";
-		String keyIdent_Gh1 = "projektLoL.hotkey.Gh1";
-		String keyIdent_Gh2 = "projektLoL.hotkey.Gh2";
-		String keyIdent_N1 = "projektLoL.hotkey.N1";
-		String keyIdent_D1 = "projektLoL.hotkey.D1";
-		
-		
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), keyIdent_BB1);
-	    hotkeyManager.getActionMap().put(keyIdent_BB1, new AbstractAction() {
-			private static final long serialVersionUID = -4920728089299859094L;
+		gKeyLogger.addGlobalKeyListener(this);
+		gKeyLogger.setConverter(new GermanKeyboardConverter());
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerBB();
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0), keyIdent_RB1);
-	    hotkeyManager.getActionMap().put(keyIdent_RB1, new AbstractAction() {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				setTimerRB();				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0), keyIdent_W1);
-	    hotkeyManager.getActionMap().put(keyIdent_W1, new AbstractAction() {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerW();
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0), keyIdent_Gh1);
-	    hotkeyManager.getActionMap().put(keyIdent_Gh1, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerG();
-				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0), keyIdent_Go1);
-	    hotkeyManager.getActionMap().put(keyIdent_Go1, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerGolOne();
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0), keyIdent_BB2);
-	    hotkeyManager.getActionMap().put(keyIdent_BB2, new AbstractAction() {
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerBB_2();				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F7, 0), keyIdent_RB2);
-	    hotkeyManager.getActionMap().put(keyIdent_RB2, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerRB_2();			
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0), keyIdent_W2);
-	    hotkeyManager.getActionMap().put(keyIdent_W2, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerW_2();
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F9, 0), keyIdent_Gh2);
-	    hotkeyManager.getActionMap().put(keyIdent_Gh2, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerG_2();				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F10, 0), keyIdent_Go2);
-	    hotkeyManager.getActionMap().put(keyIdent_Go2, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerGo_2();				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F11, 0), keyIdent_D1);
-	    hotkeyManager.getActionMap().put(keyIdent_D1, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerD();				
-			}
-		});
-	    hotkeyManager.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F12, 0), keyIdent_N1);
-	    hotkeyManager.getActionMap().put(keyIdent_N1, new AbstractAction() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setTimerN();				
-			}
-		});
-	    
+		gKeyLogger.startListening();
 	}
 
 	private void initTimer() {
@@ -394,7 +273,6 @@ public class Timer5on5Frame extends JFrame {
 		timerW_2 = new GameTimer(60, lblWolfs_2);
 		timerN_1 = new GameTimer(60 * 7, lblNashor);
 		timerD_1 = new GameTimer(60 * 6, lblDragon);
-
 	}
 
 	private void setTimerBB() {
@@ -443,6 +321,74 @@ public class Timer5on5Frame extends JFrame {
 
 	private void setTimerN() {
 		timerN_1.start();
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		gKeyLogger.removeGlobalKeyListener(this);
+		
+		gKeyLogger.stopListening();
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void keyPressed(GlobalKeyEvent gke) { // Wird bei jedem KeyEvent global aufgerufen
+		if (gke.getConverted().equalsIgnoreCase("[F1]")) {
+			setTimerBB();
+		} else if (gke.getConverted().equalsIgnoreCase("[F2]")) {
+			setTimerRB();
+		} else if (gke.getConverted().equalsIgnoreCase("[F3]")) {
+			setTimerW();
+		} else if (gke.getConverted().equalsIgnoreCase("[F4]")) {
+			setTimerG();
+		} else if (gke.getConverted().equalsIgnoreCase("[F5]")) {
+			setTimerGolOne();
+		} else if (gke.getConverted().equalsIgnoreCase("[F6]")) {
+			setTimerBB_2();
+		} else if (gke.getConverted().equalsIgnoreCase("[F7]")) {
+			setTimerRB_2();
+		} else if (gke.getConverted().equalsIgnoreCase("[F8]")) {
+			setTimerW_2();
+		} else if (gke.getConverted().equalsIgnoreCase("[F9]")) {
+			setTimerG_2();
+		} else if (gke.getConverted().equalsIgnoreCase("[F10]")) {
+			setTimerGo_2();
+		} else if (gke.getConverted().equalsIgnoreCase("[F11]")) {
+			setTimerD();
+		} else if (gke.getConverted().equalsIgnoreCase("[F12]")) {
+			setTimerN();
+		} else if (Main.DEBUG) {
+			System.out.println("Unconsumed Key Event: " + gke.getConverted());
+		}
 	}
 
 }

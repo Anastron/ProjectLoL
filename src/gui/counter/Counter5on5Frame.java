@@ -44,6 +44,7 @@ public class Counter5on5Frame extends JFrame {
 		
 		mntmAddChampion = new JMenuItem("Add Champion");
 		mntmAddChampion.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				openAddChampion();
 			}
