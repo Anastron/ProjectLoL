@@ -12,7 +12,7 @@ public class Main {
 		//#########################################################################
 		//############## SUPER WICHTIGER NATIVER INITIALIZATIONSCODE ##############
 		//#########################################################################
-//		MKLLibraryLoader.loadLibrary(); TODO FIX IT
+		MKLLibraryLoader.loadLibrary();
 //		SpeechSynthesizer.init(); TODO FIX IT
 		LookAndFeelHelper.initLnFManager();
 		//#########################################################################
