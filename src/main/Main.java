@@ -12,8 +12,8 @@ public class Main {
 		//#########################################################################
 		//############## SUPER WICHTIGER NATIVER INITIALIZATIONSCODE ##############
 		//#########################################################################
-		MKLLibraryLoader.loadLibrary();
-	//	SpeechSynthesizer.init();
+//		MKLLibraryLoader.loadLibrary(); TODO FIX IT
+//		SpeechSynthesizer.init(); TODO FIX IT
 		LookAndFeelHelper.initLnFManager();
 		//#########################################################################
 		
@@ -26,7 +26,7 @@ public class Main {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 		    @Override
 		    public void run() {
-		        SpeechSynthesizer.destroy();
+//		        SpeechSynthesizer.destroy(); TODO FIX IT
 		    }
 		});
 		//#################################################################

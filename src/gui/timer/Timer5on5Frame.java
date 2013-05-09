@@ -256,10 +256,11 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 	}
 
 	private void initHotkeys() {
-		gKeyLogger.addGlobalKeyListener(this);
-		gKeyLogger.setConverter(new GermanKeyboardConverter());
-
-		gKeyLogger.startListening();
+		// TODO FIX IT
+//		gKeyLogger.addGlobalKeyListener(this);
+//		gKeyLogger.setConverter(new GermanKeyboardConverter());
+//
+//		gKeyLogger.startListening();
 	}
 
 	private void initTimer() {
@@ -278,7 +279,7 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 	}
 
 	private void setTimerBB() {
-		SpeechSynthesizer.speak("Starting Timer B B");
+//		SpeechSynthesizer.speak("Starting Timer B B"); TODO FIX IT
 		timerBB_1.start();
 	}
 
@@ -338,9 +339,9 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		gKeyLogger.removeGlobalKeyListener(this);
-		
-		gKeyLogger.stopListening();
+//		gKeyLogger.removeGlobalKeyListener(this);
+//		TODO FIX IT
+//		gKeyLogger.stopListening();
 	}
 
 	@Override
