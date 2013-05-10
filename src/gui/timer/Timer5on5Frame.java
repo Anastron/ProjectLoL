@@ -278,52 +278,75 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 	}
 
 	private void setTimerBB() {
-		SpeechSynthesizer.speak("Starting Timer Blue Buff, 5 minutes");
 		timerBB_1.start();
+		SpeechSynthesizer.speak("Starting Timer Blue Buff, 5 minutes");
+		timerBB_1.ending = "BB_1";
 	}
 
 	private void setTimerRB() {
 		timerRB_1.start();
+		SpeechSynthesizer.speak("Starting Timer Red Buff, 5 minutes");
+		timerRB_1.ending = "RB_1";
 	}
 
 	private void setTimerW() {
 		timerW_1.start();
+	    SpeechSynthesizer.speak("Starting Timer Wolfs, 1 minutes");
+	    timerW_1.ending = "W_1";
 	}
 
 	private void setTimerG() {
 		timerGh_1.start();
+		SpeechSynthesizer.speak("Starting Timer Ghosts, 50 seconds");
+		timerGh_1.ending = "Gh_1";
 	}
 
 	private void setTimerGolOne() {
 		timerGo_1.start();
+		SpeechSynthesizer.speak("Starting Timer Golem, 1 minutes");
+		timerGo_1.ending = "Go_1";
 	}
 
 	private void setTimerBB_2() {
-		timerBB_2.start();
+		timerBB_2.start();	
+		SpeechSynthesizer.speak("Starting Timer Blue Buff, 5 minutes");
+		timerBB_2.ending = "BB_2";
 	}
 
 	private void setTimerRB_2() {
 		timerRB_2.start();
+		SpeechSynthesizer.speak("Starting Timer Red Buff, 5 minutes");
+		timerRB_2.ending = "RB_2";
 	}
 
 	private void setTimerW_2() {
-		timerW_2.start();
+		timerW_2.start();	
+		SpeechSynthesizer.speak("Starting Timer Wolfs, 1 minutes");
+		timerW_2.ending = "W_2";
 	}
 
 	private void setTimerG_2() {
 		timerGh_2.start();
+		SpeechSynthesizer.speak("Starting Timer Ghosts, 50 seconds");
+		timerGh_2.ending = "Gh_2";
 	}
 
 	private void setTimerGo_2() {
-		timerGo_2.start();
+		timerGo_2.start();	
+		SpeechSynthesizer.speak("Starting Timer Golem, 1 minutes");
+		timerGo_2.ending = "Go_2";
 	}
 
 	private void setTimerD() {
-		timerD_1.start();
+		timerD_1.start();	
+		SpeechSynthesizer.speak("Starting Timer Dragon, 6 minutes");
+		timerD_1.ending = "D_1";
 	}
 
 	private void setTimerN() {
 		timerN_1.start();
+		SpeechSynthesizer.speak("Starting Timer Nashor, 7 minutes");
+		timerN_1.ending = "N_1";
 	}
 
 	@Override
