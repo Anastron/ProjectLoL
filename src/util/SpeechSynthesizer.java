@@ -10,7 +10,11 @@ public class SpeechSynthesizer {
 
 	public static void init() {
 		VoiceManager voiceManager = VoiceManager.getInstance();
-		voice = voiceManager.getVoice(VNAME);
+		try {
+			voice = voiceManager.getVoice(VNAME);
+		} catch (Exception e){
+			// Just do nothing - voice is null after this
+		}
 		
 		if (voice == null) {
             System.err.println("Cannot find a voice named " + VNAME + ".");
