@@ -6,23 +6,31 @@ import com.sun.speech.freetts.VoiceManager;
 public class SpeechSynthesizer {
 	private final static String VNAME = "kevin16";
 
-	private static VoiceManager voiceManager;
-	private static Voice voice;
+	private static Voice voice = null;
 
 	public static void init() {
-		voiceManager = VoiceManager.getInstance();
+		VoiceManager voiceManager = VoiceManager.getInstance();
 		voice = voiceManager.getVoice(VNAME);
 		
 		if (voice == null) {
             System.err.println("Cannot find a voice named " + VNAME + ".");
-            System.exit(-2);
+            Voice[] list = voiceManager.getVoices();
+            if (list.length > 0) {
+            	voice = list[0];
+            } else {
+            	System.err.println("No Voices installed");
+            }
         }
 		
 		voice.allocate();
 	}
 	
 	public static void speak(String txt) {
-		voice.speak(txt);
+		if (voice != null) {
+			voice.speak(txt);
+		} else {
+			System.err.println("Could not synthesize \"" + txt + "\", voice is null");
+		}
 	}
 
 	public static void destroy() {

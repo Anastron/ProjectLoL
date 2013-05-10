@@ -278,7 +278,7 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 	}
 
 	private void setTimerBB() {
-//		SpeechSynthesizer.speak("Starting Timer B B"); TODO FIX IT
+		SpeechSynthesizer.speak("Starting Timer Blue Buff, 5 minutes");
 		timerBB_1.start();
 	}
 
@@ -390,7 +390,7 @@ public class Timer5on5Frame extends JFrame implements WindowListener, GlobalKeyL
 		} else if (gke.getConverted().equalsIgnoreCase("[F12]")) {
 			setTimerN();
 		} else if (Main.DEBUG) {
-			System.out.println("Unconsumed Key Event: " + gke.getConverted());
+			System.out.println("[DEBUGMESSAGE] Unconsumed Key Event: " + gke.getConverted());
 		}
 	}
 
