@@ -30,7 +30,7 @@ public class Counter3on3Frame extends JFrame {
 	
 	public Counter3on3Frame() {
 		setSize(new Dimension(534, 397));
-		setTitle("Counters on 5on5");
+		setTitle("Counters on 3on3");
 		initGUI();
 		setLocationRelativeTo(null);
 	}

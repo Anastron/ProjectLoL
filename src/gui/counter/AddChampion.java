@@ -3,7 +3,8 @@ package gui.counter;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -20,9 +21,14 @@ public class AddChampion extends JFrame {
 	private JTextField textField_1;
 	private JButton btnAdd;
 	private JButton btnCancel;
+	FileWriter out;
+	BufferedReader in;
+	private String text = null;
+
 	
 	public AddChampion() {
 		initGUI();
+		initReaderAndWriter();
 		setLocationRelativeTo(null);	
 	}
 	private void initGUI() {
@@ -73,19 +79,34 @@ public class AddChampion extends JFrame {
 		textdateiErzeugen();
 		dispose();
 	}
-	@SuppressWarnings("resource")
+	public void initReaderAndWriter(){
+
+	try {
+		out = new FileWriter ("Champs.txt",true);
+		in = new BufferedReader (new FileReader("Champs.txt"));
+
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	}
+	
+
 	private void textdateiErzeugen() {
-BufferedWriter out;
-		
+
 		try {
-			out = new BufferedWriter (new FileWriter(""+textField.getText ()+".txt"));
-			out.write(textField.getText ());
-			out.newLine();
-			out.write(textField_1.getText ());
-			out.close();
+			if(textField.getText().contentEquals()){                     //Was muss hier verglichen werden??
+				System.out.println("Schon vorhanden");
+			}else{
+				out.write(textField.getText ()+"   ;");
+				out.write(textField_1.getText ());
+				out.write(System.getProperty("line.separator"));
+				out.write(System.getProperty("line.separator"));
+				out.close();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
+
 }
