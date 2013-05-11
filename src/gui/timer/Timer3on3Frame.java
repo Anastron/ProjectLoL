@@ -4,12 +4,23 @@ package gui.timer;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Timer3on3Frame extends JFrame {
+import util.SpeechSynthesizer;
+
+import main.Main;
+import de.mikescher.MikesKeyLogger.converter.GermanKeyboardConverter;
+import de.mikescher.MikesKeyLogger.events.GlobalKeyEvent;
+import de.mikescher.MikesKeyLogger.interfaces.GlobalKeyListener;
+import de.mikescher.MikesKeyLogger.logger.GlobalKeyLogger;
+
+public class Timer3on3Frame extends JFrame implements WindowListener,
+		GlobalKeyListener {
 	private static final long serialVersionUID = 1L;
 	private JButton btnGolemR;
 	private JButton btnGolemL;
@@ -33,87 +44,91 @@ public class Timer3on3Frame extends JFrame {
 	private GameTimer timerWrL;
 	private GameTimer timerSpider;
 
+	private GlobalKeyLogger gKeyLogger = new GlobalKeyLogger();
+
 	public Timer3on3Frame() {
 		initGUI();
 		initTimer();
-		//initHotkeys();
-		setLocationRelativeTo(null);
+		initHotkeys();
+
 	}
 
 	private void initGUI() {
-		setSize(new Dimension(210, 470));
+		setSize(new Dimension(300, 470));
 		setResizable(false);
 		setTitle("3on3-Timer");
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 
-		btnGolemR = new JButton("Golem rechts");
+		btnGolemR = new JButton("F1: Golem rechts");
 		btnGolemR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerGR();
+				setTimerGR();
 			}
 		});
-		btnGolemR.setBounds(10, 25, 110, 23);
+		btnGolemR.setBounds(10, 25, 150, 23);
 		getContentPane().add(btnGolemR);
 
-		btnGolemL = new JButton("Golem links");
+		btnGolemL = new JButton("F4: Golem links");
 		btnGolemL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerGL();
+				setTimerGL();
 			}
 		});
-		btnGolemL.setBounds(10, 50, 110, 23);
+		btnGolemL.setBounds(10, 152, 150, 23);
 		getContentPane().add(btnGolemL);
 
-		btnWolfR = new JButton("Wolf rechts");
+		btnWolfR = new JButton("F2: Wolf rechts");
 		btnWolfR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerWR();
+				setTimerWR();
 			}
 		});
-		btnWolfR.setBounds(10, 75, 110, 23);
+		btnWolfR.setBounds(10, 59, 150, 23);
 		getContentPane().add(btnWolfR);
 
-		btnWolfL = new JButton("Wolf links");
+		btnWolfL = new JButton("F5: Wolf links");
 		btnWolfL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerWL();
+				setTimerWL();
 			}
 		});
-		btnWolfL.setBounds(10, 100, 110, 23);
+		btnWolfL.setBounds(10, 186, 150, 23);
 		getContentPane().add(btnWolfL);
 
-		btnWraithR = new JButton("Wraith rechts");
+		btnWraithR = new JButton("F3: Wraith rechts");
 		btnWraithR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerWrR();
+				setTimerWrR();
 			}
 		});
-		btnWraithR.setBounds(10, 125, 110, 23);
+		btnWraithR.setBounds(10, 93, 150, 23);
 		getContentPane().add(btnWraithR);
 
-		btnWraithL = new JButton("Wraith links");
+		btnWraithL = new JButton("F6: Wraith links");
 		btnWraithL.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerWrL();
+				setTimerWrL();
 			}
 		});
-		btnWraithL.setBounds(10, 150, 110, 23);
+		btnWraithL.setBounds(10, 220, 150, 23);
 		getContentPane().add(btnWraithL);
 
-		btnSpider = new JButton("Spider");
+		btnSpider = new JButton("F7: Spider");
 		btnSpider.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				TimerS();
+				setTimerS();
 			}
 		});
-		btnSpider.setBounds(10, 175, 110, 23);
+		btnSpider.setBounds(10, 271, 150, 23);
 		getContentPane().add(btnSpider);
 
 		lblGolemR = new JLabel("50s");
@@ -121,28 +136,35 @@ public class Timer3on3Frame extends JFrame {
 		getContentPane().add(lblGolemR);
 
 		lblGolemL = new JLabel("50s");
-		lblGolemL.setBounds(170, 54, 100, 14);
+		lblGolemL.setBounds(170, 156, 100, 14);
 		getContentPane().add(lblGolemL);
 
 		lblWolfR = new JLabel("50s");
-		lblWolfR.setBounds(170, 79, 100, 14);
+		lblWolfR.setBounds(170, 63, 100, 14);
 		getContentPane().add(lblWolfR);
 
 		lblWolfL = new JLabel("50s");
-		lblWolfL.setBounds(170, 104, 100, 14);
+		lblWolfL.setBounds(170, 190, 100, 14);
 		getContentPane().add(lblWolfL);
 
 		lblWraithR = new JLabel("50s");
-		lblWraithR.setBounds(170, 129, 100, 14);
+		lblWraithR.setBounds(170, 97, 100, 14);
 		getContentPane().add(lblWraithR);
 
 		lblWraithL = new JLabel("50s");
-		lblWraithL.setBounds(170, 154, 100, 14);
+		lblWraithL.setBounds(170, 224, 100, 14);
 		getContentPane().add(lblWraithL);
 
 		lblSpider = new JLabel("300s");
-		lblSpider.setBounds(170, 179, 100, 14);
+		lblSpider.setBounds(170, 275, 100, 14);
 		getContentPane().add(lblSpider);
+	}
+
+	private void initHotkeys() {
+		gKeyLogger.addGlobalKeyListener(this);
+		gKeyLogger.setConverter(new GermanKeyboardConverter());
+
+		gKeyLogger.startListening();
 	}
 
 	private void initTimer() {
@@ -156,38 +178,106 @@ public class Timer3on3Frame extends JFrame {
 		timerSpider = new GameTimer(300, lblSpider);
 	}
 
-	private void TimerGR() {
+	private void setTimerGR() {
 		timerGR.start();
+		SpeechSynthesizer.speak("Starting Timer Golems rechts, 50 seconds");
+		timerGR.ending = "GR";
 	}
 
-	private void TimerGL() {
-
+	private void setTimerGL() {
 		timerGL.start();
+		SpeechSynthesizer.speak("Starting Timer Golem links, 50 seconds");
+		timerGL.ending = "GL";
 	}
 
-	private void TimerWR() {
-
+	private void setTimerWR() {
 		timerWR.start();
+		SpeechSynthesizer.speak("Starting Timer Wölfe rechts, 50 seconds");
+		timerWR.ending = "WR";
 	}
 
-	private void TimerWL() {
-
+	private void setTimerWL() {
 		timerWL.start();
+		SpeechSynthesizer.speak("Starting Timer Wölfe links, 50 seconds");
+		timerWL.ending = "GR";
 	}
 
-	private void TimerWrR() {
-
+	private void setTimerWrR() {
 		timerWrR.start();
+		SpeechSynthesizer.speak("Starting Timer Wraith rechts, 50 seconds");
+		timerWrR.ending = "WrR";
 	}
 
-	private void TimerWrL() {
-
+	private void setTimerWrL() {
 		timerWrL.start();
+		SpeechSynthesizer.speak("Starting Timer Wraith links, 50 seconds");
+		timerWrL.ending = "WrL";
 	}
 
-	private void TimerS() {
-
+	private void setTimerS() {
 		timerSpider.start();
+		SpeechSynthesizer.speak("Starting Timer Spider, 5 minutes");
+		timerSpider.ending = "Spider";
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		gKeyLogger.removeGlobalKeyListener(this);
+
+		gKeyLogger.stopListening();
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// unused
+	}
+
+	@Override
+	public void keyPressed(GlobalKeyEvent gke) { // Wird bei jedem KeyEvent
+													// global aufgerufen
+		if (gke.getConverted().equalsIgnoreCase("[F1]")) {
+			setTimerGR();
+		} else if (gke.getConverted().equalsIgnoreCase("[F2]")) {
+			setTimerWR();
+		} else if (gke.getConverted().equalsIgnoreCase("[F3]")) {
+			setTimerWrR();
+		} else if (gke.getConverted().equalsIgnoreCase("[F4]")) {
+			setTimerGL();
+		} else if (gke.getConverted().equalsIgnoreCase("[F5]")) {
+			setTimerWL();
+		} else if (gke.getConverted().equalsIgnoreCase("[F6]")) {
+			setTimerWrL();
+		} else if (gke.getConverted().equalsIgnoreCase("[F7]")) {
+			setTimerS();
+		} else if (Main.DEBUG) {
+			System.out.println("[DEBUGMESSAGE] Unconsumed Key Event: "
+					+ gke.getConverted());
+		}
 	}
 
 }

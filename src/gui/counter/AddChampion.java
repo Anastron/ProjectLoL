@@ -1,13 +1,16 @@
 package gui.counter;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class AddChampion extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -49,6 +52,12 @@ public class AddChampion extends JFrame {
 		btnAdd = new JButton("Add");
 		btnAdd.setBounds(311, 172, 98, 26);
 		getContentPane().add(btnAdd);
+		btnAdd.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			AddKlicked();
+		}
+		});
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -59,5 +68,24 @@ public class AddChampion extends JFrame {
 		});
 		btnCancel.setBounds(195, 172, 98, 26);
 		getContentPane().add(btnCancel);
+	}
+	private void AddKlicked() {
+		textdateiErzeugen();
+		dispose();
+	}
+	@SuppressWarnings("resource")
+	private void textdateiErzeugen() {
+BufferedWriter out;
+		
+		try {
+			out = new BufferedWriter (new FileWriter(""+textField.getText ()+".txt"));
+			out.write(textField.getText ());
+			out.newLine();
+			out.write(textField_1.getText ());
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

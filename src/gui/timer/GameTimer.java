@@ -89,6 +89,20 @@ public class GameTimer implements Runnable {
 			SpeechSynthesizer.speak("end Dragon");
 		} else if(ending == "N_1"){
 			SpeechSynthesizer.speak("end Nashor");
+		}else if(ending == "GR"){
+			SpeechSynthesizer.speak("end Golem rechts");
+		}else if(ending == "GL"){
+			SpeechSynthesizer.speak("end Golem links");
+		}else if(ending == "WR"){
+			SpeechSynthesizer.speak("end Wölfe rechts");
+		}else if(ending == "WL"){
+			SpeechSynthesizer.speak("end Wölfe links");
+		}else if(ending == "WrR"){
+			SpeechSynthesizer.speak("end Wraith rechts");
+		}else if(ending == "WrL"){
+			SpeechSynthesizer.speak("end Wraith links");
+		}else if(ending == "Spider"){
+			SpeechSynthesizer.speak("end Spider");
 		}
 	}
 }

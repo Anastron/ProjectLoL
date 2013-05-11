@@ -83,9 +83,9 @@ public class ChooseGamemode extends JFrame {
 			JOptionPane.showMessageDialog(null, "Diese Option ist leider noch nicht vollständig :(", "Nicht vollständig", JOptionPane.OK_CANCEL_OPTION);
 			
 		} else if (rdbtn3on3.isSelected()) {			
-			// Counter3on3Frame TT = new Counter3on3Frame();
-			// TT.setVisible(true);
-			// dispose();
+			 Counter3on3Frame TT = new Counter3on3Frame();
+			 TT.setVisible(true);
+			 dispose();
 			
 			// Falls Counter3on3Frame vorhandeen folgende Zeilen löschen
 			
