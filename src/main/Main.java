@@ -1,5 +1,8 @@
 package main;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import gui.Mainwindow;
 import util.LookAndFeelHelper;
 import util.SpeechSynthesizer;
@@ -12,9 +15,13 @@ public class Main {
 		//#########################################################################
 		//############## SUPER WICHTIGER NATIVER INITIALIZATIONSCODE ##############
 		//#########################################################################
-		MKLLibraryLoader.loadLibrary();
+		String loadedLib = MKLLibraryLoader.loadLibrary();
 		SpeechSynthesizer.init();
 		LookAndFeelHelper.initLnFManager();
+		//#########################################################################
+		if (loadedLib == null) { // catch dem errors
+			JOptionPane.showMessageDialog(new JFrame(), "GlobalKeyListener DLL not found", "DLL not found", 0);
+		}
 		//#########################################################################
 		
 		Mainwindow MainWindow = new Mainwindow();
