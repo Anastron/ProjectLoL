@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -83,7 +84,7 @@ public class AddChampion extends JFrame {
 
 	try {
 		out = new FileWriter ("Champs.txt",true);
-		in = new BufferedReader (new FileReader("Champs.txt"));
+		
 
 	} catch (IOException e) {
 		e.printStackTrace();
@@ -94,10 +95,11 @@ public class AddChampion extends JFrame {
 	private void textdateiErzeugen() {
 
 		try {
-			if(textField.getText().contentEquals()){                     //Was muss hier verglichen werden??
+			if(champExist()){
 				System.out.println("Schon vorhanden");
 			}else{
-				out.write(textField.getText ()+"   ;");
+				out.write(textField.getText ());
+				out.write(System.getProperty("line.separator"));
 				out.write(textField_1.getText ());
 				out.write(System.getProperty("line.separator"));
 				out.write(System.getProperty("line.separator"));
@@ -107,6 +109,22 @@ public class AddChampion extends JFrame {
 			e.printStackTrace();
 		}
 		
+	}
+	private boolean champExist() throws IOException {
+		String champs="";
+		try {
+			in = new BufferedReader (new FileReader("Champs.txt"));
+			
+			while(champs!=null){
+				champs=in.readLine();
+				if(textField.getText ().equalsIgnoreCase(champs)){
+				return true;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
