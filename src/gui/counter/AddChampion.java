@@ -24,7 +24,6 @@ public class AddChampion extends JFrame {
 	private JButton btnCancel;
 	FileWriter out;
 	BufferedReader in;
-	private String text = null;
 
 	
 	public AddChampion() {
