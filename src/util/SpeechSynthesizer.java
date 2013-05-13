@@ -4,11 +4,15 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 public class SpeechSynthesizer {
+	private final static String VOICES = "com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory" + "," + "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
 	private final static String VNAME = "kevin16";
 
 	private static Voice voice = null;
 
 	public static void init() {
+		System.setProperty("freetts.voices", VOICES);
+		
+		
 		VoiceManager voiceManager = VoiceManager.getInstance();
 		try {
 			voice = voiceManager.getVoice(VNAME);
@@ -24,9 +28,11 @@ public class SpeechSynthesizer {
             } else {
             	System.err.println("No Voices installed");
             }
-        }
+        } 
 		
-		voice.allocate();
+		if (voice != null) {
+        	voice.allocate();
+        }
 	}
 	
 	public static void speak(String txt) {
@@ -38,6 +44,8 @@ public class SpeechSynthesizer {
 	}
 
 	public static void destroy() {
-		voice.deallocate();
+		if (voice != null) {
+			voice.deallocate();
+		}
 	}
 }
