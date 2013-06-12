@@ -5,7 +5,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -32,7 +31,7 @@ public class CounterFrame extends JFrame {
 
 	private JMenuItem mntmEditChampion;
 	private JList<String> list;
-	
+
 	public CounterFrame() {
 		setSize(new Dimension(534, 397));
 		setTitle("Counters on 3on3");
@@ -41,13 +40,13 @@ public class CounterFrame extends JFrame {
 	}
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initGUI() {
-		
+
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		mnChampMenu = new JMenu("Champions");
 		menuBar.add(mnChampMenu);
-		
+
 		mntmAddChampion = new JMenuItem("Add Champion");
 		mntmAddChampion.addActionListener(new ActionListener() {
 			@Override
@@ -56,31 +55,31 @@ public class CounterFrame extends JFrame {
 			}
 		});
 		mnChampMenu.add(mntmAddChampion);
-		
+
 		mntmEditChampion = new JMenuItem("Edit Champion");
 		mnChampMenu.add(mntmEditChampion);
-		
+
 		mntmDeleteChampion = new JMenuItem("Delete Champion");
 		mnChampMenu.add(mntmDeleteChampion);
 		getContentPane().setLayout(null);
-		
+
 		panel = new JPanel();
 		panel.setBounds(0, 0, 518, 24);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setVgap(2);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		getContentPane().add(panel);
-		
+
 		txtSearch = new JTextField();
 		txtSearch.setText("Search...");
 		panel.add(txtSearch);
 		txtSearch.setColumns(10);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(502, 333, -492, -294);
 		getContentPane().add(scrollPane);
-		
-		
+
+
 		list = new JList();
 		list.setBounds(10, 35, 486, 292);
 		getContentPane().add(list);
@@ -92,17 +91,17 @@ public class CounterFrame extends JFrame {
 	@SuppressWarnings("resource")
 	private void showChamps() {
 		String champs="";
-	
+
 		try {
 			BufferedReader in = new BufferedReader (new FileReader("Champs.txt"));
-			
+
 			DefaultListModel<String> model = new DefaultListModel<String>();
 			while(champs!=null){
 				champs=in.readLine();
 			model.addElement(in.readLine()+"     /     "+in.readLine()+""+in.readLine());
-		
+
 			list.setModel(model);}
-		
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -112,4 +111,3 @@ public class CounterFrame extends JFrame {
 		add.setVisible(true);
 	}
 }
-

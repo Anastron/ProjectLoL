@@ -1,6 +1,6 @@
 package gui;
 
-import gui.counter.CounterFrame;
+ import gui.counter.CounterFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -86,8 +86,8 @@ public class Mainwindow extends JFrame {
 	}
 	
 	private void openModusChooseCounter(){
-		CounterFrame choose = new CounterFrame();
-		choose.setVisible(true);
+		 CounterFrame choose = new CounterFrame();
+		 choose.setVisible(true);
 	}
 	
 	private void openModusChooseLineup(){
