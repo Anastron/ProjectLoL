@@ -1,21 +1,26 @@
 package gui.counter;
 
-import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JList;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
 
-public class Counter5on5Frame extends JFrame {
+
+public class CounterFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu mnChampMenu;
@@ -23,18 +28,19 @@ public class Counter5on5Frame extends JFrame {
 	private JMenuItem mntmDeleteChampion;
 	private JPanel panel;
 	private JTextField txtSearch;
-	private JScrollPane scrollPane;
-	private JList<Object> list;
+
+
 	private JMenuItem mntmEditChampion;
+	private JList<String> list;
 	
-	public Counter5on5Frame() {
+	public CounterFrame() {
 		setSize(new Dimension(534, 397));
-		setTitle("Counters on 5on5");
+		setTitle("Counters on 3on3");
 		initGUI();
 		setLocationRelativeTo(null);
 	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initGUI() {
-		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -56,27 +62,54 @@ public class Counter5on5Frame extends JFrame {
 		
 		mntmDeleteChampion = new JMenuItem("Delete Champion");
 		mnChampMenu.add(mntmDeleteChampion);
+		getContentPane().setLayout(null);
 		
 		panel = new JPanel();
+		panel.setBounds(0, 0, 518, 24);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setVgap(2);
 		flowLayout.setAlignment(FlowLayout.RIGHT);
-		getContentPane().add(panel, BorderLayout.NORTH);
+		getContentPane().add(panel);
 		
 		txtSearch = new JTextField();
 		txtSearch.setText("Search...");
 		panel.add(txtSearch);
 		txtSearch.setColumns(10);
 		
-		scrollPane = new JScrollPane();
-		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(502, 333, -492, -294);
+		getContentPane().add(scrollPane);
 		
-		list = new JList<Object>();
-		list.setSize(new Dimension(1, 1));
-		scrollPane.setViewportView(list);
+		
+		list = new JList();
+		list.setBounds(10, 35, 486, 292);
+		getContentPane().add(list);
+		showChamps();
+
+	}
+
+
+	@SuppressWarnings("resource")
+	private void showChamps() {
+		String champs="";
+	
+		try {
+			BufferedReader in = new BufferedReader (new FileReader("Champs.txt"));
+			
+			DefaultListModel<String> model = new DefaultListModel<String>();
+			while(champs!=null){
+				champs=in.readLine();
+			model.addElement(in.readLine()+"     /     "+in.readLine()+""+in.readLine());
+		
+			list.setModel(model);}
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	private void openAddChampion(){
 		AddChampion add = new AddChampion();
 		add.setVisible(true);
 	}
 }
+

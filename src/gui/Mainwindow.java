@@ -1,6 +1,6 @@
 package gui;
 
-import gui.counter.ChooseGamemode;
+import gui.counter.CounterFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -86,7 +86,7 @@ public class Mainwindow extends JFrame {
 	}
 	
 	private void openModusChooseCounter(){
-		ChooseGamemode choose = new ChooseGamemode();
+		CounterFrame choose = new CounterFrame();
 		choose.setVisible(true);
 	}
 	
